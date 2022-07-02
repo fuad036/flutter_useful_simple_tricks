@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_useful_simple_tricks/tricks/app_back_from_tab/app_back_from_tab_screen.dart';
 import 'package:flutter_useful_simple_tricks/tricks/dropdown/dropdown_trick_screen.dart';
 
 class TricksHomeScreen extends StatefulWidget {
@@ -18,30 +19,46 @@ class _TricksHomeScreenState extends State<TricksHomeScreen> {
           title: const Text('Tricks'),
         ),
         body: ListView(
-          children:  [
+          children: [
             TricksListTile(
               title: 'Dropdown list',
               subtitle:
-                'we will try to explore one of the best possible way to work with dropdown list',
+                  'we will try to explore one of the best possible way to work with dropdown list',
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const DropDownTrickScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const DropDownTrickScreen()),
                 );
               },
-
-            )
+            ),
+            TricksListTile(
+              title: 'app_back_from_tab',
+              subtitle:
+                  'suppose we are in a screen that contains multiple tabs. How to handle back press when we are not in the home tab',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AppBackFromTabScreen()),
+                );
+              },
+            ),
           ],
         ));
   }
 }
 
-
 class TricksListTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final Function onPressed;
-  const TricksListTile({Key? key, required this.subtitle, required this.title, required this.onPressed}) : super(key: key);
+  const TricksListTile(
+      {Key? key,
+      required this.subtitle,
+      required this.title,
+      required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
